@@ -1,12 +1,12 @@
 <idea-plugin>
     <id>top.zhoukunqiang.sql.parser</id>
     <name>Sql parser</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <vendor email="imzhoukunqiang@gmail.com" url="https://www.zhoukunqiang.top">zhoukunqiang</vendor>
 
     <description><![CDATA[
       Mybatis sql转换器，可以将mybatis控制台输出的语句和参数转化为普通sql语句，方便执行。<br>
-      使用方法：选中需要转换的sql和参数，右键，点击parse to sql即可。
+      使用方法：选中需要转换的sql和参数，右键，点击Parse to sql即可。
     ]]></description>
 
     <change-notes><![CDATA[
@@ -14,6 +14,8 @@
             优化SQL参数获取方式，修复部分参数获取错误的BUG.
         <br>
             修复因空格导致SQL无法获取的问题。
+        <br>
+            修复因参数后缀有空格失效的情况
     ]]>
     </change-notes>
 

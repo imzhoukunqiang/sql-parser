@@ -50,7 +50,10 @@ public class SqlParserBuilder {
             Matcher matcher = PARAM_PREFIX.matcher(string);
             if (matcher.find()) {
                 String str = string.substring(matcher.end());
-                return StringUtil.removePrefix(str, " ");
+                //移除前缀
+                str = StringUtil.removePrefix(str, " ");
+                //trim后缀
+                return StringUtil.trimSuffix(str);
             }
         }
         return null;
