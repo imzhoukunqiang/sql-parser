@@ -1,6 +1,6 @@
 package parser.sql.parser;
 
-import org.apache.commons.lang.StringUtils;
+import com.jgoodies.common.base.Strings;
 import parser.sql.ParseResult;
 import parser.utils.MessageUtil;
 
@@ -36,14 +36,14 @@ public class SqlParser {
      * 判断能否转换 * @return
      */
     public boolean canParse() {
-        return StringUtils.isNotBlank(param) && StringUtils.isNotBlank(nativeSql);
+        return Strings.isNotBlank(param) && Strings.isNotBlank(nativeSql);
     }
 
     /**
      * 判断是否有原sql * @return
      */
     public boolean hasNativeSql() {
-        return StringUtils.isNotBlank(nativeSql);
+        return Strings.isNotBlank(nativeSql);
     }
 
     /**

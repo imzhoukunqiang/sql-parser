@@ -30,7 +30,11 @@ public class ParamParser {
         String[] strings = new String[result.size()];
         for (int i = 0; i < result.size(); i++) {
             Param param = result.get(i); //是否需要加上单引号
-            strings[i] = SINGLE_QUOTES_SET.contains(param.getType()) ? "'" + param.getValue() + "'" : param.getValue();
+            if (SINGLE_QUOTES_SET.contains(param.getType())) {
+                strings[i] = "'" + param.getValue() + "'";
+            } else {
+                strings[i] = param.getValue();
+            }
         }
         return strings;
     }
