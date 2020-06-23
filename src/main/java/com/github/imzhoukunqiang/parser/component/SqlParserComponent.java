@@ -1,4 +1,4 @@
-package parser.component;
+package com.github.imzhoukunqiang.parser.component;
 
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;

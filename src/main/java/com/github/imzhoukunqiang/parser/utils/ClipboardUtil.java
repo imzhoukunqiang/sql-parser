@@ -1,4 +1,4 @@
-package parser.utils;
+package com.github.imzhoukunqiang.parser.utils;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;

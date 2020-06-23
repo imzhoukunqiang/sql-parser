@@ -1,0 +1,51 @@
+plugins {
+    id "java"
+    // https://github.com/JetBrains/gradle-intellij-plugin
+    id "org.jetbrains.intellij" version "0.4.20"
+}
+
+apply plugin: 'idea'
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
+group 'top.zhoukunqiang.idea'
+version '1.1.0'
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url "https://www.jetbrains.com/intellij-repository/releases" }
+    maven { url 'https://maven.aliyun.com/repository/jcenter' }  // <= here
+    maven { url 'https://maven.aliyun.com/repository/google' }  // <= here
+    jcenter() // 保留
+    google() // 保留
+
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+// https://mvnrepository.com/artifact/org.apache.commons/commons-text
+    compile group: 'org.apache.commons', name: 'commons-text', version: '1.6'
+//    compile group: 'com.google.guava', name: 'guava', version: '27.0.1-jre'
+//    compile group: 'org.springframework.data', name: 'spring-data-redis', version: '2.2.2.RELEASE'
+}
+
+intellij {
+    version 'IC-2018.3'
+    //IntelliJ IDEA 2016.3 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
+    pluginName 'sql-parser'
+}
+
+
+runIde{
+    jvmArgs "-Djdk.util.zip.ensureTrailingSlash=false"
+}
+
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}

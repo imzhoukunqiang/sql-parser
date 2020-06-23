@@ -1,4 +1,6 @@
-package parser.utils;
+package com.github.imzhoukunqiang.parser.utils;
+
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Objects;
 
@@ -7,6 +9,14 @@ import java.util.Objects;
  * Created by zkq on 18-5-22 下午7:03.
  */
 public final class StringUtil {
+
+    private StringUtil() {
+
+    }
+
+    public static final String WHITESPACE = " \n\r\f\t";
+    public static final String[] EMPTY_STRINGS = new String[0];
+
 
     public static String trimSuffix(String target) {
         Objects.requireNonNull(target);
@@ -18,7 +28,6 @@ public final class StringUtil {
         return len < chars.length ? new String(chars, 0, len) : target;
     }
 
-
     public static String removePrefix(String target, String prefix) {
         if (target == null || prefix == null) {
             return target;
@@ -29,12 +38,13 @@ public final class StringUtil {
         } else {
             return target;
         }
-
-
     }
 
-    private StringUtil() {
-
+    public static String escapeSql(String str) {
+        if (str == null) {
+            return null;
+        }
+        return StringUtils.replace(str, "'", "''");
     }
 
- }
+}

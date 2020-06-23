@@ -1,8 +1,8 @@
-package parser.sql.parser;
+package com.github.imzhoukunqiang.parser.sql.parser;
 
+import com.github.imzhoukunqiang.parser.sql.ParseResult;
+import com.github.imzhoukunqiang.parser.utils.MessageUtil;
 import com.jgoodies.common.base.Strings;
-import parser.sql.ParseResult;
-import parser.utils.MessageUtil;
 
 import java.text.MessageFormat;
 import java.util.Optional;
@@ -16,7 +16,7 @@ public class SqlParser {
     private String nativeSql;
     private String param;
     private int paramCount;
-    private static Pattern compile = Pattern.compile("\\?");
+    private static final Pattern PATTERN = Pattern.compile("\\?");
     public static final SqlParser EMPTY_PARSER = new SqlParser();
 
     /**
@@ -24,7 +24,7 @@ public class SqlParser {
      */
     public ParseResult parse() {
         String sql = Optional.ofNullable(parseSql()).orElse("");
-        Object[] params = Optional.ofNullable(ParamParser.getParams(param)).orElse(new String[]{});
+        Object[] params = ParamParser.getParams(param);
         if (paramCount != params.length) {
             return new ParseResult(nativeSql, false);
         }
@@ -55,10 +55,10 @@ public class SqlParser {
             return null;
         }
         String resultSql = MessageUtil.messageFormatEscape(nativeSql);
-        Matcher matcher = compile.matcher(resultSql);
+        Matcher matcher = PATTERN.matcher(resultSql);
         while (matcher.find()) {
             resultSql = matcher.replaceFirst("{" + paramCount + "}");
-            matcher = compile.matcher(resultSql);
+            matcher = PATTERN.matcher(resultSql);
             paramCount++;
         }
         return resultSql;

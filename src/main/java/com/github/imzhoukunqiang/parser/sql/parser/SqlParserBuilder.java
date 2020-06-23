@@ -1,8 +1,8 @@
-package parser.sql.parser;
+package com.github.imzhoukunqiang.parser.sql.parser;
 
+import com.github.imzhoukunqiang.parser.utils.StringUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import parser.utils.StringUtil;
 
 import java.util.Arrays;
 import java.util.Collections;

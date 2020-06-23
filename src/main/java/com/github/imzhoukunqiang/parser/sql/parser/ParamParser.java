@@ -1,7 +1,8 @@
-package parser.sql.parser;
+package com.github.imzhoukunqiang.parser.sql.parser;
 
-import parser.sql.Param;
-import parser.sql.ParamType;
+import com.github.imzhoukunqiang.parser.sql.Param;
+import com.github.imzhoukunqiang.parser.sql.ParamType;
+import com.github.imzhoukunqiang.parser.utils.StringUtil;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -31,7 +32,7 @@ public class ParamParser {
         for (int i = 0; i < result.size(); i++) {
             Param param = result.get(i); //是否需要加上单引号
             if (SINGLE_QUOTES_SET.contains(param.getType())) {
-                strings[i] = "'" + param.getValue() + "'";
+                strings[i] = "'" + StringUtil.escapeSql(param.getValue()) + "'";
             } else {
                 strings[i] = param.getValue();
             }

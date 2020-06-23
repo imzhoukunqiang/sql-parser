@@ -1,4 +1,4 @@
-package parser.sql;
+package com.github.imzhoukunqiang.parser.sql;
 
 /**
  * Created by zkq on 2018/1/22 14:51.

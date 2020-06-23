@@ -1,4 +1,4 @@
-package icon;
+package com.github.imzhoukunqiang.parser.utils;
 
 import com.intellij.openapi.util.IconLoader;
 
