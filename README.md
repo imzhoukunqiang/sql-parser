@@ -8,7 +8,7 @@ Intellij IDEA的一款mybatis sql日志转换插件
 ## 安装方式
 
 
-[下载链接](https://github.com/imzhoukunqiang/sql-parser/blob/master/sql-parser.jar?raw=true)
+[下载链接](https://github.com/imzhoukunqiang/sql-parser/blob/master/sql-parser.zip?raw=true)
 
 ![](http://p88o5m4j3.bkt.clouddn.com/Fuv-QEN4ChkDPXW85_jUncWvJUty.png)
 
