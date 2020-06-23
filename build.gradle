@@ -37,6 +37,7 @@ intellij {
     version 'IC-2018.3'
     //IntelliJ IDEA 2016.3 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
     pluginName 'sql-parser'
+    intellij.updateSinceUntilBuild false
 }
 
 
@@ -46,6 +47,14 @@ runIde{
 
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+             优化SQL参数获取方式，修复部分参数获取错误的BUG.
+    <br>
+        修复因空格导致SQL无法获取的问题。
+    <br>
+        修复因参数后缀有空格失效的情况
+    <br>
+        2020-06-23 增加sql格式化功能
+
+     """
+
 }
