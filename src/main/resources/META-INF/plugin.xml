@@ -2,7 +2,7 @@
     <id>top.zhoukunqiang.sql.parser</id>
     <name>Sql parser</name>
     <version>1.1.0</version>
-    <vendor email="imzhoukunqiang@gmail.com" url="https://www.zhoukunqiang.top">zhoukunqiang</vendor>
+    <vendor email="imzhoukunqiang@gmail.com" url="https://github.com/imzhoukunqiang">zhoukunqiang</vendor>
 
     <description><![CDATA[
       Mybatis sql转换器，可以将mybatis控制台输出的语句和参数转化为普通sql语句，方便执行。<br>
@@ -35,6 +35,7 @@
 
     </extensions>
 
+    <depends>com.intellij.modules.platform</depends>
     <actions>
         <!-- Add your actions here -->
         <group id="SqlParser.Group">
