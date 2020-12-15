@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>top.zhoukunqiang.sql.parser</id>
     <name>Sql parser</name>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <vendor email="imzhoukunqiang@gmail.com" url="https://github.com/imzhoukunqiang">zhoukunqiang</vendor>
 
     <description><![CDATA[
@@ -18,6 +18,9 @@
             修复因参数后缀有空格失效的情况
         <br>
             2020-06-23 增加sql格式化功能
+        <br>
+            提供格式化后与格式化前SQL两个选项
+        <br>
     ]]>
     </change-notes>
 
@@ -43,7 +46,8 @@
             <add-to-group group-id="ConsoleEditorPopupMenu" relative-to-action="CompareClipboardWithSelection"
                           anchor="before"/>
             <separator/>
-            <action id="SqlParser.SetSql" class="com.github.imzhoukunqiang.parser.action.SqlParseAction" text="Parse to Sql"/>
+            <action id="SqlParser.SetFormattedSql" class="com.github.imzhoukunqiang.parser.action.FormattedSqlParseAction" text="Parse SQL(Formatted)"/>
+            <action id="SqlParser.SetSql" class="com.github.imzhoukunqiang.parser.action.SqlParseAction" text="Parse SQL"/>
         </group>
     </actions>
 

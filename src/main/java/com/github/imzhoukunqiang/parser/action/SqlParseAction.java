@@ -5,19 +5,18 @@ import com.github.imzhoukunqiang.parser.sql.parser.SqlParser;
 import com.github.imzhoukunqiang.parser.sql.parser.SqlParserBuilder;
 import com.github.imzhoukunqiang.parser.utils.BasicFormatterImpl;
 import com.github.imzhoukunqiang.parser.utils.ClipboardUtil;
+import com.github.imzhoukunqiang.parser.utils.Commons;
 import com.github.imzhoukunqiang.parser.utils.Icons;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.jgoodies.common.base.Strings;
 import org.apache.commons.text.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -26,14 +25,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 /**
- * Created by zkq on 2018/1/11 16:31.
+ *
+ * @author zkq
+ * @date 2018/1/11 16:31
  */
 public class SqlParseAction extends AnAction {
     private static final Logger LOGGER = Logger.getLogger(SqlParseAction.class);
-    private Application application = ApplicationManager.getApplication();
     private SqlParser tempParser = SqlParser.EMPTY_PARSER;
-    private BasicFormatterImpl sqlFormatter = new BasicFormatterImpl();
+    private final BasicFormatterImpl sqlFormatter = new BasicFormatterImpl();
     private String tempSelectedText = "";
+    protected boolean beautify = false;
 
     @Override
     public void update(AnActionEvent e) {
@@ -61,9 +62,12 @@ public class SqlParseAction extends AnAction {
         ParseResult parseResult = parser.parse();
         /* String s = Messages.showInputDialog( project, parseResult.isSuccess() ? "Success !" : "Failed !", "Parse Result ", parseResult.isSuccess() ? Messages.getInformationIcon() : Messages.getWarningIcon(), parseResult.getResult(), new NonEmptyInputValidator() ); */
         String sql = parseResult.getResult();
-        if (Strings.isNotEmpty(sql)) {
+        if (Commons.isNotEmpty(sql)) {
             MessageType messageType = parseResult.isSuccess() ? MessageType.INFO : MessageType.WARNING;
-            ClipboardUtil.setClipboardString(sqlFormatter.format(sql));
+            if (beautify){
+                sql = sqlFormatter.format(sql);
+            }
+            ClipboardUtil.setClipboardString(sql);
             showPopupBalloon(e.getData(PlatformDataKeys.EDITOR), sql, messageType, "Sql has been copied to the clipboard");
         }
     }

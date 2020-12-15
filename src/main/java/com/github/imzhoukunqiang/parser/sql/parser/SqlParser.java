@@ -1,8 +1,9 @@
 package com.github.imzhoukunqiang.parser.sql.parser;
 
 import com.github.imzhoukunqiang.parser.sql.ParseResult;
+import com.github.imzhoukunqiang.parser.utils.Commons;
 import com.github.imzhoukunqiang.parser.utils.MessageUtil;
-import com.jgoodies.common.base.Strings;
+
 
 import java.text.MessageFormat;
 import java.util.Optional;
@@ -36,14 +37,14 @@ public class SqlParser {
      * 判断能否转换 * @return
      */
     public boolean canParse() {
-        return Strings.isNotBlank(param) && Strings.isNotBlank(nativeSql);
+        return Commons.isNotBlank(param) && Commons.isNotBlank(nativeSql);
     }
 
     /**
      * 判断是否有原sql * @return
      */
     public boolean hasNativeSql() {
-        return Strings.isNotBlank(nativeSql);
+        return Commons.isNotBlank(nativeSql);
     }
 
     /**
