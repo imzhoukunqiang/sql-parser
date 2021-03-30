@@ -7,6 +7,8 @@ public interface ParamType {
     String STRING = "(String)";
     String INTEGER = "(Integer)";
     String TIMESTAMP = "(Timestamp)";
+    String DATE = "(Date)";
+    String TIME = "(Time)";
     String LONG = "(Long)";
     String NULL = "(null)";
 }
